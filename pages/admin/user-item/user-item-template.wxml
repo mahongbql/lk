@@ -1,0 +1,23 @@
+<template name="userItem">
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">用户id</view>
+      <view class="th-2">提交时间</view>
+      <view class="th-3">升级类型</view>
+    </view>
+    <block wx:for="{{userList}}" wx:key="index">
+      <view class="tr bg-g" scroll-y="true" wx:if="{{index % 2 == 0}}" catchtap="updateLevel" 
+      data-id="{{index}}" data-type="{{item.type}}">
+        <view class="td-1" selectable="true">{{item.id}}</view>
+        <view class="td-2" selectable="true">{{item.sendTime}}</view>
+        <view class="td-3" selectable="true"> {{item.type}} </view>
+      </view>
+      <view class="tr bg-g2" scroll-y="true" catchtap="updateLevel" 
+      data-id="{{index}}" data-type="{{item.type}}" wx:else>
+        <view class="td-1" selectable="true">{{item.id}}</view>
+        <view class="td-2" selectable="true">{{item.sendTime}}</view>
+        <view class="td-3" selectable="true"> {{item.type}} </view>
+      </view>
+    </block>
+  </view>
+</template>

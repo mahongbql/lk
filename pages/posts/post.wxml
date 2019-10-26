@@ -1,0 +1,29 @@
+<import src="post-item/post-item-template.wxml" />
+<view class="warp">
+  <image class="background-img" src='https://luckydogma.work/group1/M00/00/01/Cv4ZwlyxTt-AUF_LAAgqUO7xyKk175.jpg'></image>
+  <view class="tabitem">
+    <scroll-view scroll-x="true" class="tab-h">
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">{{array[0]}}</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">{{array[1]}}</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{array}}">
+            <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='morePosts'>
+                <block wx:for="{{posts_key}}" wx:key="{{index}}">
+                  <view catchtap="onPostTap" 
+                        data-post_name="{{item.post_name}}"
+                        data-avatarUrl="{{item.avatarUrl}}"
+                        data-nickName="{{item.nickName}}"
+                        data-title="{{item.title}}">
+                    <template is="postItem" data="{{...item}}"/>
+                  </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+  </view>
+</view>
+<view class="create">
+  <image class="create-img" src="../resource/icon/posts/bianji.png" bindtap='jumpToEdit'></image>
+</view>

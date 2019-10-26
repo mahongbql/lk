@@ -1,0 +1,22 @@
+<template name="picItem">
+<!-- 在页面上放一个隐藏区域，并用image组件去加载一个或多个图片资源 -->
+  <view style="display:none">
+    <image wx:for="{{images}}" wx:key="id" id="{{item.id}}" src="{{item.path}}" bindload="onImageLoad"></image>
+  </view>
+  <scroll-view scroll-y="true" style="height:{{scrollH}}px">
+    <view style="width:100%">
+      <view class="img_item">
+        <view wx:for="{{col1}}" wx:key="index">
+          <image src="{{item.path}}" style="width:100%;height:{{item.height}}px" catchtap="picAuth" 
+      data-id="{{item.id}}" data-des="{{item.des}}" data-path="{{item.path}}" data-userIcon="{{item.userIcon}}" data-index="{{index}}" data-col="{{1}}"></image>
+        </view>
+      </view>
+      <view class="img_item">
+        <view wx:for="{{col2}}" wx:key="index">
+          <image src="{{item.path}}" style="width:100%;height:{{item.height}}px" catchtap="picAuth" 
+      data-id="{{item.id}}" data-des="{{item.des}}" data-path="{{item.path}}" data-userIcon="{{item.userIcon}}" data-index="{{index}}" data-col="{{2}}"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</template>

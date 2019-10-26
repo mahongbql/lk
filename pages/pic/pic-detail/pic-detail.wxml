@@ -1,0 +1,23 @@
+<view class='swiper'>
+  <swiper bindchange="bindchange" style="height:{{imgheights[current]}}rpx; margin-top:{{imgmargintop[current]}}px">
+    <block wx:for='{{imgList}}' wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item.path}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" bindtap="viewPic"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view wx:if="{{showMsg}}" class="imgMsg">
+    <view class="userMsg">
+      <image class="userinfo-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{nickName}}</text>
+    </view>    
+    <view class="textMsg">{{des}}</view>    
+  </view>
+  <image wx:if="{{isCollect && showMsg}}" catchtap="onCollectionTip"
+    class="collect" src="../../resource/icon/pic/collection.png"></image>
+  <image wx:if="{{!isCollect && showMsg}}" catchtap="onCollectionTip"
+    class="collect" src="../../resource/icon/pic/collection-anti.png"></image>
+  <view class="downloadImg">
+    <image src='../../resource/icon/pic/download.png' bindtap='downloadImg'></image>
+  </view>
+</view>

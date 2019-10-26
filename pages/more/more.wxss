@@ -1,0 +1,10 @@
+/* pages/more/more.wxss */
+body {
+  background-color: black;
+}
+
+.m-wrap {
+  position: absolute;
+  overflow: hidden;
+  background: #000;
+}

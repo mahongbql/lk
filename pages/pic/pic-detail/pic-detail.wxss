@@ -1,0 +1,69 @@
+/* pages/pic/pic-detail/pic-detail.wxss */
+page{
+  background: black;
+}
+
+.slide-image {
+  width: 98%;
+  height: auto;
+  margin:1%;
+}
+
+.imgMsg{
+  width:100%;
+  height:150px;
+  background: rgba(0,0,0,0.5);
+  bottom: 0px;
+  position: fixed;
+  left: 0;
+  z-index: 9999;
+}
+
+.userMsg{
+  width:100%;
+  height:50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.textMsg{
+  width:100%;
+  height:50%;
+  font-size: 33rpx;
+  line-height: 80rpx;
+  padding-left: 100rpx;
+  color: hsla(0, 0%, 100%, 0.486)
+}
+
+.userinfo-avatar{
+  width: 50px;
+  height: 50px;
+  margin: 20rpx ;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: white;
+  margin: 66rpx 6rpx;
+}
+
+.collect{
+  width:100rpx;
+  height:100rpx;
+  position: fixed;
+  right: 20px;
+  top:3%;
+}
+
+.downloadImg{
+  width:90rpx;
+  height:90rpx;
+  position: fixed;
+  left: 20px;
+  top:3%;
+}
+
+.downloadImg image{
+  width:100%;
+  height:100%;
+}

@@ -1,0 +1,84 @@
+.table {
+  border: 2px solid darkgray;
+  width: 98%;
+  margin-top: 1rem;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 3rem;
+  align-items: center;
+}
+.td {
+    width:20%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border-right: 2px solid #ddd;
+    height: 100%;
+    align-items: center;
+}
+.td-1 {
+    width:20%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border-right: 2px solid #ddd;
+    height: 100%;
+    align-items: center;
+}
+.td-2 {
+    width:55%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    border-right: 2px solid #ddd;
+    height: 100%;
+    align-items: center;
+}
+.td-3 {
+    width:25%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border-right: 2px solid #ddd;
+    height: 100%;
+}
+.bg-w{
+  background: #afb4db;
+ 
+}
+.bg-g{
+  background: #E6F3F9;
+}
+.bg-g2{
+  background: #fff;
+}
+.th {
+  width: 20%;
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  border-right: 2px solid #ddd;
+}
+.th-2 {
+  width: 55%;
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  border-right: 2px solid #ddd;
+}
+.th-3 {
+  width: 25%;
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}

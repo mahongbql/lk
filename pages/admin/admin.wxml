@@ -1,0 +1,46 @@
+<!--pages/admin/admin.wxml-->
+<import src="pic-item/pic-item-template.wxml" />
+<import src="user-item/user-item-template.wxml" />
+<import src="posts-item/posts-item-template.wxml" />
+<view class="tabitem">
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">用户管理</view>
+    <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">图片管理</view>
+    <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">文章管理</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"    style="height:700px">
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height:700px">
+          <template is="userItem" data="{{userList}}"/>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height:700px">
+          <template is="picItem" data="{{images,col1,col2,scrollH}}"/>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height:700px">
+          <template is="postsItem" data="{{posts}}"/>
+        </scroll-view>
+      </swiper-item>
+  </swiper>
+</view>
+<view wx:if="{{imgpass}}" class="modal-mask">
+  <view class="msg">
+    <view class="picshow">
+      <image class="imgstyle" src='{{path}}'></image>
+    </view>
+    <view class="usericon">
+      <image class="userinfo-avatar" src='{{usericon}}' mode="cover"></image>
+    </view>
+    <view class="picdes">
+      {{des}}
+    </view>
+  </view>
+  <view class="model-footer">
+    <view class="btn-cancel" bindtap="onCancel">取消</view>
+    <view class="btn-nopass" bindtap="onNopass">不通过</view>
+    <view class="btn-confirm" bindtap="onConfirm">通过</view>
+  </view>
+</view>

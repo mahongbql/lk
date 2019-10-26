@@ -1,0 +1,74 @@
+<!--pages/login/login.wxml-->
+<!--index.wxml-->
+<import src="data-item/data-item-template.wxml" />
+<import src="posts-item/posts-item-template.wxml" />
+<view class="container">
+  <view class="userinfo">
+    <view wx:if="{{!hasUserInfo && canIUse}}">
+      <view class='header'>
+          <image src='../resource/icon/login/weixin.png'></image>
+      </view>
+
+      <view class='content'>
+          <view>申请获取以下权限</view>
+          <text>获得你的公开信息(昵称，头像等)</text>
+      </view>
+
+      <button class='getUserInfo-button' type='primary' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            授权登录
+      </button>
+    </view>
+
+    <block wx:if="{{hasUserInfo}}">
+      <view class="{{identityClass}}">{{identity}}</view>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" bindtap='upLevel'></image>
+      <text class="userinfo-nickname" bindtap='admin'>{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view wx:if="{{hasUserInfo}}" class="userFileData">
+    <scroll-view scroll-x="true" class="tab-h">
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">优质文章</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">精品图片</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">用户收藏</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item>
+          <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='moreData'>
+                <block wx:for="{{dataList}}" wx:key="{{index}}">
+                    <view catchtap="onPostsTap" data-postName="{{item.post_name}}">
+                      <template is="postsItem"  data="{{...item}}"/>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='moreData'>
+                <block wx:for="{{dataList}}" wx:key="{{index}}">
+                    <view catchtap="onPicTap" data-id="{{item.id}}" data-type="{{currentTab}}">
+                      <template is="dataItem"  data="{{...item}}"/>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+        </swiper-item>
+    </swiper>
+  </view>
+</view>
+<view wx:if="{{isUpLevel}}" class="upLevel">
+  <view class="vipcontent">
+    <text>
+      1. 本站只允许管理员进行文件上传，用户无权限上传 \n
+      2. VIP 可以下载喜欢的图片（后续开通） \n
+      3. 申请成功后等待管理员通过即可成为 VIP \n
+      4. VIP 可以继续申请成为 author \n
+      5. 若用户名出现 ??? 等乱码，请重新授权用户信息
+    </text>
+  </view>
+  
+  <view class="button">
+    <view class="concel" bindtap='concel'>取 消</view>
+    <view class="confirm" bindtap='confirm'>申 请</view>
+  </view>
+</view>

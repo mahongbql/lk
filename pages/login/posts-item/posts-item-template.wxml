@@ -1,0 +1,14 @@
+<template name="postsItem">
+  <view class="posts-item-ans">
+    <view class="posts-title">{{title}}</view>
+    <view class="posts-msg">
+      <view class="posts-like">
+          <image class="posts-like-image" src="../resource/icon/posts/collect.png"></image>
+          <text class="posts-like-font">{{collectNumber}}</text>
+          <image class="posts-like-image" src="../resource/icon/posts/view.png"></image>
+          <text class="posts-like-font">{{viewNumber}}</text>
+        </view>
+      <view class="posts-sendtime">{{send_time}}</view>
+    </view>
+  </view>
+</template>

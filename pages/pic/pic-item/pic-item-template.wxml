@@ -1,0 +1,21 @@
+<template name="picItem">
+  <view class="item-ans">
+    <view class="photo">
+      <image class="photoimg" src="{{path}}"></image>
+    </view>
+    <view class="photomsg">
+      <view class="avatar">
+        <image class="img" src="{{userIcon}}"></image>
+      </view>
+      <view class="expertInfo">
+          <view class="des">{{des}}</view>
+      </view>
+      <view class="pic-like">
+        <image class="pic-like-image" src="../resource/icon/posts/collect.png"></image>
+        <text class="pic-like-font">{{collectNum}}</text>
+        <image class="pic-like-image" src="../resource/icon/posts/view.png"></image>
+        <text class="pic-like-font">{{viewNumber}}</text>
+      </view>
+    </view>
+  </view>
+</template>

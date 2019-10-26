@@ -1,0 +1,8 @@
+<template name="dataItem">
+  <view class="item-ans">
+    <view class="photo">
+      <image class="photoimg" src="{{path}}"></image>
+      <view class="dataTime"> Create by  {{createTime}}</view>
+    </view>
+  </view>
+</template>

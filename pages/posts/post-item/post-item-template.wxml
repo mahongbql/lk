@@ -1,0 +1,23 @@
+[<template name="postItem">
+  <view class="post-content">
+    <view wx:if="{{url != null}}" class="post-pic" >
+      <image mode="aspectFill" class="pic" src="{{url}}"></image>
+    </view>
+    <view class="post-msg">
+      <view class="{{url != null ? 'title' : 'title-nopic'}}">{{title}}</view>
+      <view wx:if="{{url != null}}" class="line"></view>
+      <view class="{{url != null ? 'msg' : 'msg-nopic'}}">
+        <view class="avatar">
+          <image src='{{avatarUrl}}'></image>
+        </view>
+        <view class="nickName">{{nickName}}</view>
+        <view class="post-like">
+          <image class="post-like-image" src="../resource/icon/posts/collect.png"></image>
+          <text class="post-like-font">{{collectNumber}}</text>
+          <image class="post-like-image" src="../resource/icon/posts/view.png"></image>
+          <text class="post-like-font">{{viewNumber}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

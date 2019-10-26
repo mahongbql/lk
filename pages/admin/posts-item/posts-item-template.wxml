@@ -1,0 +1,22 @@
+<template name="postsItem">
+  <view class="table">
+    <view class="tr bg-w">
+      <view class="th">title</view>
+      <view class="th-2">sendTime</view>
+      <view class="th-3">nickName</view>
+    </view>
+    <block wx:for="{{posts}}" wx:key="index">
+      <view class="tr bg-g" scroll-y="true" wx:if="{{index % 2 == 0}}" catchtap="checkPosts"    bindlongpress="updataPostsStatus" data-index="{{index}}">
+        <view class="td-1" selectable="true">{{item.title}}</view>
+        <view class="td-2" selectable="true">{{item.send_time}}</view>
+        <view class="td-3" selectable="true"> {{item.nickName}} </view>
+      </view>
+      <view class="tr bg-g2" scroll-y="true" catchtap="checkPosts" bindlongpress="updataPostsStatus" 
+data-index="{{index}}" wx:else>
+        <view class="td-1" selectable="true">{{item.title}}</view>
+        <view class="td-2" selectable="true">{{item.send_time}}</view>
+        <view class="td-3" selectable="true"> {{item.nickName}} </view>
+      </view>
+    </block>
+  </view>
+</template>

@@ -1,0 +1,24 @@
+<view class="modal-mask" wx:if="{{existText}}">
+  <view class="modal-dialog">
+    <view class="modal-title">标 题</view>
+    <view class="modal-content">
+      <view class="modal-input">
+        <input class="input" name="text" placeholder="添加标题(20字内)" bindinput ="textInput"/>
+      </view>
+    </view>
+    <view class="model-type">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          图片类型：{{array[index]}} (点击切换)
+        </view>
+      </picker>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{loadDataFinish}}">
+  <xing-editor bindfinish="finish" output-type="html" image-upload-url="{{host_url}}" image-upload-name="file" image-upload-header="{{header}}" image-upload-formData="{{formData}}" html="{{html}}" />
+</view>

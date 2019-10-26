@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="warp">
+  <image class="background-img" src='../resource/img/index/background.jpg'></image>
+  <view class="userimg">
+    <image src='../resource/icon/index/userimg.png' bindtap="jumpToUser"></image>
+  </view>
+  <view class="container">
+    <view class="weui-grids">
+        <view class="weui-grid" wx:for="{{routers}}" wx:key="name">
+            <navigator url="{{item.url}}">
+                <view class='weui-grid__bg'>
+                    <view class="weui-grid__icon">
+                        <image src="{{item.icon}}" mode="scaleToFill" />
+                    </view>
+                    <text class="weui-grid__label">{{item.name}}</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+  </view>
+  <!-- <view class="talking">
+    <view class="luckydog-saying">
+      <view class="saying">{{saying}}</view>
+    </view>
+    <view class="luckydog-img">
+      <image src='../resource/img/index/luckydog.jpg'></image>
+    </view>
+    <view class="user-saying">
+      <form bindreset="res" bindsubmit="sendMsgToRobot">
+        <input placeholder="和 luckydog 聊聊天 谈谈心" type="text" bindinput="textInput" bindconfirm="sendMsgToRobot"/>  
+      </form>
+      <button class='sendmsg-button' bindtap='sendMsgToRobot'>发 送</button>
+    </view>
+  </view>
+  <view class="function">
+    <view class="write">
+      <image class="img" src="../resource/icon/index/write.png" bindtap="jumpToPost"></image>
+    </view>
+    <view class="pic">
+      <image class="img" src="../resource/icon/index/pic.png" bindtap="jumpToPic"></image>
+    </view>
+    <view class="more">
+      <image class="img" src="../resource/icon/index/more.png" bindtap='jumpToMore'></image>
+    </view>
+  </view> -->
+</view>

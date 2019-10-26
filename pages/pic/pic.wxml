@@ -1,0 +1,35 @@
+<import src="pic-item/pic-item-template.wxml" />
+<view class="warp">
+  <image class="picbackground" src='https://luckydogma.work/group1/M00/00/01/Cv4ZwlyxTt-AUF_LAAgqUO7xyKk175.jpg'></image>
+  <view class="title" style="flex-direction:row;">
+    <view class="flex-item back" bindtap="back">
+      <image class="backimg" src="../resource/icon/pic/picback.png"></image>
+    </view>
+    <view class="flex-item logotext">
+      <image class="logoimg" src="../resource/img/piclogo.png"></image>
+    </view>
+    <view class="flex-item upload" bindtap="upload">
+      <image class="uploadimg" src="../resource/icon/pic/picupload.png"></image>
+    </view>
+  </view>
+  <view class="tabitem">
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">生活随拍</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">自然风光</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">书法绘画</view>
+        <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">美女靓图</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{[0,1,2,3]}}">
+            <scroll-view scroll-y="true" class="scoll-h" bindscrolltolower='morePic'>
+                <block wx:for="{{pic_key}}" wx:key="{{index}}">
+                    <view catchtap="onPicTap" data-picId="{{item.id}}">
+                      <template is="picItem"  data="{{...item}}"/>
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+  </view>
+</view>

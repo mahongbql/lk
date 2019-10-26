@@ -1,0 +1,21 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+  <block>
+    <text class="title">{{title}}</text>
+    <view class="author-date">
+      <image src="{{avatarUrl}}" class="avatar"></image>
+      <text class="author">{{nickName}}</text>
+      <text class="const-text">发表于</text>
+      <text class="date">{{posts.send_time}}</text>
+    </view>
+    <view class="tool">
+      <view class="circle-img">
+        <image catchtap="onCollectionTip" wx:if="{{collected}}" src="../../resource/icon/posts/collection.png"></image>
+        <image catchtap="onCollectionTip" wx:else src="../../resource/icon/posts/collection-anti.png"></image>
+        <image catchtap="onShareTap" src="../../resource/icon/posts/share.png" class="share-img"></image>
+      </view>
+      <view class="tool-line"></view>
+    </view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </block>
+</view>
