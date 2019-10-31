@@ -41,7 +41,7 @@ page {
 }
 
 .placeholderStyle {
-  color: red;
+  color: whitesmoke;
   
 }
 .weui-icon-search_in-box {
@@ -55,7 +55,7 @@ page {
   -webkit-flex: auto;
   flex: auto;
   border-radius: 5px;
-  background: #fff;
+  background: rgba(0, 0, 0, 0);
   border: 1rpx solid #e6e6ea;
 }
 .weui-search-bar__box {
@@ -71,6 +71,7 @@ page {
   height: 28px;
   line-height: 28px;
   font-size: 14px;
+  color: whitesmoke;
 }
 
 .weui-icon-clear {
@@ -90,12 +91,12 @@ page {
   border-radius: 3px;
   text-align: center;
   color: #9b9b9b;
-  background: #fff;
+  background: whitesmoke;
   line-height: 28px;
 }
 .weui-search-bar__cancel-btn {
   margin-left: 10px;
   line-height: 28px;
-  color: #DC3C24;
+  color: whitesmoke;
   white-space: nowrap;
 }
