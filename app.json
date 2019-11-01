@@ -9,12 +9,15 @@
     "pages/pic/pic-detail/pic-detail",
     "pages/admin/admin",
     "pages/edit/postEdit",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/dream/dream",
+    "pages/rili/rili"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
