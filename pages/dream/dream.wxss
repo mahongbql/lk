@@ -16,8 +16,7 @@ page {
 
 /* logo */
 .dream-logo {
-  position: absolute;
-  top:0%;
+  top:100px;
   width:80%;
   height:10%;
   left: 1%;
@@ -25,10 +24,10 @@ page {
 
 /* 输入框 */
 .weui-search-bar {
-  position: absolute;
-  top:20%;
   left:8%;
-  padding: 8px 10px;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
