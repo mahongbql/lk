@@ -21,4 +21,18 @@
          <text wx:else data-key='back'>解 梦</text>
     </view>
   </view>
+
+  <block wx:for='{{trendsList}}' wx:key='index'>
+    <view class="box">
+    <view class="textFour_box {{item.seeMore?'three':''}}">{{item.text}}</view>
+    <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
+      <text class="text_toggle_text">查看更多</text>
+      <image class="toggle-icon" src="../../images/1.png"></image>
+    </view>
+    <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
+      <text class="text_toggle_text">收起</text>
+      <image class="toggle-icon" src="../../images/2.png"></image>
+    </view>
+    </view>
+  </block>
 </view>

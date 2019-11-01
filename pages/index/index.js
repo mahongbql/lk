@@ -24,13 +24,13 @@ Page({
       },
       {
         name: '周公解梦',
-        url: '/pages/login/login',
+        url: '/pages/dream/dream',
         icon: '../resource/icon/dream/dream.png',
         code: '10'
       },
       {
         name: '老黄历',
-        url: '/pages/login/login',
+        url: '/pages/rili/rili',
         icon: '../resource/icon/rili/rili.png',
         code: '11'
       },
