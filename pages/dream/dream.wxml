@@ -1,4 +1,5 @@
 <!--pages/dream/dream.wxml-->
+<wxs src="../../utils/filter/filter.wxs" module="tools" />
 <view class="container">
   <image class="background-img" src="../resource/img/dream/dream.jpg"></image>
   <view class="dream-logo">
@@ -24,7 +25,9 @@
 
   <block wx:for='{{trendsList}}' wx:key='index'>
     <view class="box">
-    <view class="textFour_box {{item.seeMore?'three':''}}">{{item.text}}</view>
+    <view class="textFour_box {{item.seeMore?'three':''}}">
+      <text>{{tools.filter_N(item.text)}}</text>
+    </view>
     <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
       <text class="text_toggle_text">查看更多</text>
       <image class="toggle-icon" src="../../images/1.png"></image>
