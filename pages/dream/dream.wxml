@@ -30,11 +30,11 @@
     </view>
     <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
       <text class="text_toggle_text">查看更多</text>
-      <image class="toggle-icon" src="../../images/1.png"></image>
+      <image class="toggle-icon" src="../resource/icon/dream/more.png"></image>
     </view>
     <view class="text_toggle_box" wx:if='{{!item.seeMore && item.auto}}' data-index='{{index}}' catchtap='toggleContent'>
       <text class="text_toggle_text">收起</text>
-      <image class="toggle-icon" src="../../images/2.png"></image>
+      <image class="toggle-icon" src="../resource/icon/dream/less.png"></image>
     </view>
     </view>
   </block>
