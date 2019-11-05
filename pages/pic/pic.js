@@ -50,7 +50,7 @@ Page({
     } 
   }, 
 
-  onLoad: function(option) { 
+  onLoad: function(option) {
     var that = this; //  高度自适应 
     wx.getSystemInfo({ 
       success: function( res ) { 
@@ -202,7 +202,15 @@ Page({
 
     this.judgeHasMore(picList.length);
 
-    var list = pic_key.concat(picList);
+    /**
+     * 去重
+     */
+    var list = pic_key.concat(picList); var hash = {};
+    var hash = {};
+    list = list.reduce(function (item, next) {
+      hash[next.id] ? '' : hash[next.id] = true && item.push(next);
+      return item
+    }, []);
     
     this.setData({
       pic_key: list,
