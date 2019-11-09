@@ -1,4 +1,6 @@
 // pages/dream/dream.js
+const app = getApp()
+var util = require("../../utils/util.js")
 var index;
 Page({
 
@@ -6,33 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    trendsList: [
-      {
-        auto: false,
-        seeMore: false,
-        text: '梦见黄金，预示会遭遇挫折。梦见有人送黄金给自己，可能会蒙受损失。女人梦见丢了黄金，预示添置新首饰。\n梦见黄金，预示会遭遇挫折。梦见有人送黄金给自己，可能会蒙受损失。女人梦见丢了黄金，预示添置新首饰。',
-      },
-      {
-        auto: false,
-        seeMore: false,
-        text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
-      },
-      {
-        auto: false,
-        seeMore: false,
-        text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
-      },
-      {
-        auto: false,
-        seeMore: false,
-        text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
-      },
-      {
-        auto: false,
-        seeMore: false,
-        text: '小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟小老弟',
-      },
-    ]
+    sendData: "黄金",
+    trendsList: []
   },
 
   /**
@@ -44,7 +21,6 @@ Page({
     query.selectAll('.textFour_box').fields({
       size: true,
     }).exec(function (res) {
-      console.log(res[0], '所有节点信息');
       let lineHeight = 26; //固定高度值 单位：PX
       for (var i = 0; i < res[0].length; i++) {
         if ((res[0][i].height / lineHeight) > 3) {
@@ -109,7 +85,6 @@ Page({
   //展开更多
   toggleHandler: function (e) {
     var that = this;
-    console.log("e.currentTarget.dataset -> " + e.currentTarget.dataset)
     index = e.currentTarget.dataset.index;
     for (var i = 0; i < that.data.trendsList.length; i++) {
       if (index == i) {
@@ -133,6 +108,50 @@ Page({
     }
     that.setData({
       trendsList: that.data.trendsList
+    })
+  },
+  SearchConfirm: function(e) {
+      //发送请求，默认发送 ‘黄金’
+      //输入框获取用户输入
+    var sendData = this.data.sendData
+    console.log(sendData);
+    var data = {
+      token: app.globalData.user.token,
+      q: sendData
+    }
+    util.getHttp(this.getDreamSuccess, this.fail, data, "/publicApi/getDreamAnalytical");
+  },
+  getDreamSuccess: function(data) {
+    var result = data.dreamAnalyticalDetails;
+    console.log(result);
+    var trendsLists = [];
+    for(var i = 0; i < result.length; i++) {
+      var resultData = result[i];
+      var msg = (i + 1) + " : " + resultData.title + "\n";
+      //封装解析的des描述阶段
+      msg += "简述 ：" + "\n &nbsp;&nbsp;&nbsp;&nbsp;" + (resultData.des + "\n");
+      //封装各个部分不同角度的解析
+      var list = resultData.list;
+      for(var j = 0; j < list.length; j++) {
+        msg += "&nbsp;&nbsp;&nbsp;&nbsp;角度 " + (j + 1) + " ：\n &nbsp;&nbsp;&nbsp;&nbsp;" + list[j];
+        if (j != list.length) {
+          msg += "\n"
+        }
+      }
+      var dreamModel = {
+        auto: false,
+        seeMore: false,
+        text: msg
+      }
+      trendsLists.push(dreamModel);
+    }
+    this.setData({
+      trendsList: trendsLists
+    })
+  },
+  SearchInput: function(e) {
+    this.setData({
+      sendData: e.detail.value
     })
   }
 })

@@ -10,7 +10,7 @@
    <view class="weui-search-bar__form">
     <view class="weui-search-bar__box">
       <icon class="weui-icon-search_in-box" type="search" color="white" size="14"></icon>
-      <input type="text" class="weui-search-bar__input" 
+      <input type="text" class="weui-search-bar__input"
       placeholder-class="placeholderStyle" placeholder="梦境关键字，如：黄金" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
       <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
         <icon type="clear" size="14"></icon>
@@ -26,7 +26,7 @@
   <block wx:for='{{trendsList}}' wx:key='index'>
     <view class="box">
     <view class="textFour_box {{item.seeMore?'three':''}}">
-      <text>{{tools.filter_N(item.text)}}</text>
+      <text decode='true'>{{tools.filter_N(item.text)}}</text>
     </view>
     <view class="text_toggle_box" wx:if='{{item.seeMore}}' data-index='{{index}}' catchtap='toggleHandler'>
       <text class="text_toggle_text">查看更多</text>
