@@ -180,6 +180,9 @@ Page({
     this.setData({
       existText: false
     })
+    wx.navigateTo({
+      url: '../pic/pic'
+    })
   },
   deleteImage: function(e){
     var that = this;
