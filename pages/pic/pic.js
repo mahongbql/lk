@@ -127,7 +127,6 @@ Page({
   onPicTap: (event) => {
     //target 和 currenTarget
     //target 指的点击的当前组件 而 currenTarget指的是事件捕获的组件
-
     var picId = event.currentTarget.dataset.picid;
     var url = './pic-detail/pic-detail?id=' + picId;
     //页面跳转
@@ -168,7 +167,7 @@ Page({
 
     var pageSize = this.data.pageSize
     //下一页 = 缓存中的个数 / 每页个数 + 1
-    var pageIndex = picList.length / pageSize + 1
+    var pageIndex = parseInt(picList.length / pageSize) + 1
     var token = app.globalData.user.token;
     var hasMore = this.data.hasMore;
 
@@ -182,7 +181,6 @@ Page({
       return;
     }
     
-    console.log("分页数据：pageIndex -> " + pageIndex);
     var data = {
       "pageNum": pageIndex,
       "pageSize": pageSize,
@@ -209,9 +207,6 @@ Page({
     winHeight = winHeight - 10;
 
     this.judgeHasMore(picList.length);
-
-    console.log("更多时返回参数picList-> " + picList.length);
-
     /**
      * 去重
      */
