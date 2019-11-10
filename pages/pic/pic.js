@@ -17,11 +17,13 @@ Page({
     hasMore: true
   },
 
-  switchTab: function (e) { 
+  switchTab: function (e) {
+    //切换图片类型时，展示更多hasMore赋值为true
     var picList = this.data.pic_key
     this.setData({ 
       currentTab: e.detail.current,
-      pic_key: []
+      pic_key: [],
+      hasMore: true
     }); 
     this.checkCor(); 
     this.getData(this.data.token)
@@ -159,9 +161,14 @@ Page({
    * 展示更多图片
    */
   morePic:function(){
-    var pageIndex = this.data.pageIndex + 1
-    var pageSize = this.data.pageSize
+    //从缓存中取出的数据取下pageSize个
     var type = this.data.currentTab;
+    var key = this.data.picListKey;
+    var picList = util.getCache(key + type, false)
+
+    var pageSize = this.data.pageSize
+    //下一页 = 缓存中的个数 / 每页个数 + 1
+    var pageIndex = picList.length / pageSize + 1
     var token = app.globalData.user.token;
     var hasMore = this.data.hasMore;
 
@@ -175,6 +182,7 @@ Page({
       return;
     }
     
+    console.log("分页数据：pageIndex -> " + pageIndex);
     var data = {
       "pageNum": pageIndex,
       "pageSize": pageSize,
@@ -201,6 +209,8 @@ Page({
     winHeight = winHeight - 10;
 
     this.judgeHasMore(picList.length);
+
+    console.log("更多时返回参数picList-> " + picList.length);
 
     /**
      * 去重
