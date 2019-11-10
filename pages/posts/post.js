@@ -170,7 +170,8 @@ Page({
     } else {
       this.setData({ 
         currentTab: cur,
-        posts_key:[]
+        posts_key:[],
+        hasMore: true
       })
       this.getData()
     }
@@ -180,9 +181,9 @@ Page({
     var postsList = this.data.posts_key
     this.setData({
       currentTab: e.detail.current,
-      posts_key: []
+      posts_key: [],
+      hasMore: true
     });
-    // this.judgeHasMore(postsList.length);
     this.getData()
   },
 
@@ -218,6 +219,7 @@ Page({
         break;
     }
 
+    console.log("更多下标 -- " + pageIndex);
     var data = {
       "pageNum": pageIndex,
       "pageSize": pageSize,
@@ -238,16 +240,19 @@ Page({
     var postsList = data.postList;
     var posts_key = this.data.posts_key;
     var winHeight = this.data.winHeight;
+    var key = this.data.postsListKey;
+    var type = this.data.currentTab;
 
     winHeight = winHeight - 10;
 
     this.judgeHasMore(postsList.length);
+    var new_posts_key = posts_key.concat(postsList);
 
     this.setData({
-      posts_key: posts_key.concat(postsList),
+      posts_key: new_posts_key,
       winHeight: winHeight
     })
-    
+    util.putCache(key + type, new_posts_key, 300);
     wx.hideLoading();
   }
 })
