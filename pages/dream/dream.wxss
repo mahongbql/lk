@@ -21,6 +21,7 @@ page {
   width:80%;
   height:10%;
   left: 1%;
+  margin:0 auto
 }
 
 /* 输入框 */

@@ -16,22 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    const query = wx.createSelectorQuery();
-    query.selectAll('.textFour_box').fields({
-      size: true,
-    }).exec(function (res) {
-      let lineHeight = 26; //固定高度值 单位：PX
-      for (var i = 0; i < res[0].length; i++) {
-        if ((res[0][i].height / lineHeight) > 3) {
-          that.data.trendsList[i].auto = true;
-          that.data.trendsList[i].seeMore = true;
-        }
-      }
-      that.setData({
-        trendsList: that.data.trendsList
-      })
-    })
+    
   },
 
   /**
@@ -148,7 +133,33 @@ Page({
     this.setData({
       trendsList: trendsLists
     })
+    //进行遮盖处理
+    this.dealHide();
   },
+  /**
+   * 进行遮盖处理
+   */
+  dealHide: function(e) {
+    var that = this;
+    const query = wx.createSelectorQuery();
+    query.selectAll('.textFour_box').fields({
+      size: true,
+    }).exec(function (res) {
+      let lineHeight = 26; //固定高度值 单位：PX
+      for (var i = 0; i < res[0].length; i++) {
+        if ((res[0][i].height / lineHeight) > 3) {
+          that.data.trendsList[i].auto = true;
+          that.data.trendsList[i].seeMore = true;
+        }
+      }
+      that.setData({
+        trendsList: that.data.trendsList
+      })
+    })
+  },
+  /**
+   * 用户输入
+   */
   SearchInput: function(e) {
     this.setData({
       sendData: e.detail.value
