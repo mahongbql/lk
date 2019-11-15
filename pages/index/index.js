@@ -14,55 +14,25 @@ Page({
         name: '文章',
         url: '/pages/posts/post',
         icon: '../resource/icon/index/write.png',
-        code: '10'
+        show: true
       },
       {
         name: '图片',
         url: '/pages/pic/pic',
         icon: '../resource/icon/index/pic.png',
-        code: '11'
+        show: true
       },
       {
         name: '周公解梦',
         url: '/pages/dream/dream',
         icon: '../resource/icon/dream/dream.png',
-        code: '10'
+        show: true
       },
       {
         name: '老黄历',
         url: '/pages/rili/rili',
         icon: '../resource/icon/rili/rili.png',
-        code: '11'
-      },
-      {
-        name: '',
-        url: '',
-        icon: '',
-        code: '10'
-      },
-      {
-        name: '',
-        url: '',
-        icon: '',
-        code: '11'
-      },
-      {
-        name: '',
-        url: '',
-        icon: '',
-        code: '10'
-      },
-      {
-        name: '',
-        url: '',
-        icon: '',
-        code: '11'
-      },
-      {
-        name: '',
-        url: '',
-        icon: '',
-        code: '10'
+        show: false
       }
     ]
   },
