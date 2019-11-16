@@ -14,19 +14,19 @@ Page({
         name: '文章',
         url: '/pages/posts/post',
         icon: '../resource/icon/index/write.png',
-        show: true
+        show: false
       },
       {
         name: '图片',
         url: '/pages/pic/pic',
         icon: '../resource/icon/index/pic.png',
-        show: true
+        show: false
       },
       {
         name: '周公解梦',
         url: '/pages/dream/dream',
         icon: '../resource/icon/dream/dream.png',
-        show: true
+        show: false
       },
       {
         name: '老黄历',
@@ -54,23 +54,25 @@ Page({
       if (null != app.globalData.user) {
         wx.hideLoading();
         clearInterval(that.data.setInter);
-        that.checkUserRole();
+        that.showFunction();
       }
     }, 1000) //循环间隔 单位ms
   },
-  //防止审核被查
-  checkUserRole: function(e){
-    //正常用户使用功能
-    var role = app.globalData.user.role;
-    var functionNumber = this.data.functionNumber;
-    if(role < 1) {
-      for (var i = 0; i < functionNumber; i++) {
-        var routers = 'routers[' + i + '].url'
-        this.setData({
-           [routers] : 'index'
-        })
-      }
-    }
+  //过滤上线的功能
+  showFunction: function(e){
+    var user = app.globalData.user;
+    var post = user.post == 1 ? true : false;
+    var pic = user.pic == 1 ? true : false;
+    var dream = user.dream == 1 ? true : false;
+    var calender = user.calender == 1 ? true : false;
+    var routers = this.data.routers;
+    routers[0].show = post;
+    routers[1].show = pic;
+    routers[2].show = dream;
+    routers[3].show = calender;
+    this.setData({
+      routers: routers
+    })
   },
 
   //与luckydog交流
