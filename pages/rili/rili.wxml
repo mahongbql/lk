@@ -1,2 +1,42 @@
-<!--pages/rili/rili.wxml-->
-<text>pages/rili/rili.wxml</text>
+<!--wxml-->
+<view class="calendar">
+  <view class="flex calendar-choose">
+    <view class="tc mouth-wrap">
+      <view class="fl prev-mouth" data-handle="prev" bindtap="handleMonth">
+            <text class="iconfont icon-zuoyouqiehuan"></text>
+      </view>
+        <view class="mouth-picker">
+          <picker value="{{cur_month}}" range="{{monthList}}" bindchange="chooseMonth">
+            <view class="picker">{{cur_month+1}}月</view>
+          </picker> 
+        </view>
+        <view class="fr next-mouth"  data-handle="next" bindtap="handleMonth">
+          <text class="iconfont icon-zuoyouqiehuan1"></text>
+        </view>
+    </view>
+    <view class="year-wrap">
+      <picker class="tr" value="{{itemIndex}}" range="{{yearList}}" style="width:200rpx;" bindchange="chooseYear">
+        <view class="picker">{{yearList[itemIndex]}}年</view>
+      </picker>
+      <view class="iconfont icon-xia"></view>
+    </view>
+  </view>
+<view>
+    <view class="flex week-list">
+          <view class="week-itm" wx:for="{{weeklist}}">{{item}}</view>
+    </view>
+    <view class="flex days-list">
+      <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" bindtap="handleMonth">
+        <text>{{item}}</text>
+      </view>
+      <block wx:for="{{currentMonthDaysList}}">
+        <view class="day">
+          <text>{{item}}</text>
+        </view>
+      </block>
+      <view class="day nm" wx:for="{{nextMonthDaysList}}" data-handle="next" bindtap="handleMonth">
+        <text>{{item}}</text>
+      </view>
+    </view> 
+  </view>  
+</view>

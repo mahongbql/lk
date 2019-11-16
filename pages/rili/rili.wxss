@@ -1,1 +1,18 @@
-/* pages/rili/rili.wxss */
+
+/**app.wxss**/
+.calendar{overflow-x:hidden;}
+.calendar-choose{height:100rpx;line-height:100rpx;background:#fefefe;padding:0 30rpx;font-size:34rpx;color:#353535;border-bottom: 1rpx solid #e5e5e5;}
+.calendar .mouth-wrap{flex: 1;display: flex;justify-content: space-between;}
+.mouth-wrap .iconfont{color:#b6b6b6;font-size: 50rpx;}
+.calendar .mouth-wrap>view{display: inline-block;text-align: center;}
+.calendar .mouth-picker{width:200rpx;}
+.calendar .prev-mouth{width:100rpx;}
+.calendar .next-mouth{width:100rpx;}
+.calendar .year-wrap{width:200rpx;-webkit-display: flex;display: flex;-webkit-justify-content:center;justify-content: center;}
+.calendar .year-wrap .picker{text-align: center;}
+.calendar .week-list{line-height: 60rpx;background:#b9c4c9;}
+.calendar .week-list .week-itm{flex:1;text-align: center;font-size:28rpx;color:#fff;}
+.calendar .days-list{-webkit-flex-wrap: wrap;flex-wrap: wrap;width:99.995%;}
+.calendar .days-list .day{width: 14.285%;height:60rpx;border-right:1rpx solid #e5e5e5;border-bottom:1rpx solid #e5e5e5;color:#333;position: relative;text-align: center;line-height: 60rpx;}
+.calendar .days-list .lm,.calendar .days-list .nm{color:#b6b6b6;}
+.calendar .day .ep{color:#333;}
