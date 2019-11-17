@@ -26,15 +26,15 @@
           <view class="week-itm" wx:for="{{weeklist}}">{{item}}</view>
     </view>
     <view class="flex days-list">
-      <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" bindtap="handleMonth">
+      <view class="day lm" wx:for="{{lastMonthDaysList}}" data-day="{{item}}" data-handle="prev" bindtap="handleMonth">
         <text>{{item}}</text>
       </view>
       <block wx:for="{{currentMonthDaysList}}">
-        <view class="day">
+        <view class="day {{item == cur_day ? 'today' : ''}}" data-day="{{item}}" bindtap="changeDay">
           <text>{{item}}</text>
         </view>
       </block>
-      <view class="day nm" wx:for="{{nextMonthDaysList}}" data-handle="next" bindtap="handleMonth">
+      <view class="day nm" wx:for="{{nextMonthDaysList}}" data-day="{{item}}" data-handle="next" bindtap="handleMonth">
         <text>{{item}}</text>
       </view>
     </view> 

@@ -1,4 +1,5 @@
-
+const app = getApp()
+var util = require("../../utils/util.js")
 Page({
   data: {
     cruDataList: [],
@@ -13,20 +14,23 @@ Page({
     var that = this;
     var cur_year = new Date().getFullYear();
     var cur_month = new Date().getMonth();
-    var cur_day = new Date().getDay();
+    var cur_day = new Date().getDate();
 
     that.setData({
       dataTime: cur_year + "-" + cur_month + "-01"
     });
 
-    that.calendar(cur_year, cur_month, cur_day);
-    //拿到当前的年月，渲染第一次进来小程序的日期数据
     that.setData({
-      cur_year,
-      cur_month,
-      cur_day
+      cur_year: cur_year,
+      cur_month: cur_month,
+      cur_day: cur_day
     });
 
+    //拿到当前的年月，渲染第一次进来小程序的日期数据
+    that.calendar(cur_year, cur_month, cur_day);
+
+    //获取当前日期的详细信息
+    this.getDateDetails();
   },
 
   /**
@@ -55,7 +59,7 @@ Page({
   },
 
   //日历方法
-  calendar: function (year, month, day) {
+  calendar: function (year, month) {
     this.setData({ loadingStatus: false });
     let fullDay = parseInt(new Date(year, month + 1, 0).getDate()),//当前月总天数
       startWeek = parseInt(new Date(year, month, 1).getDay()),  //当前月第一天周几
@@ -95,7 +99,7 @@ Page({
     this.setData({
       dataTime: year + "-" + tmonth + "-01"
     });
-    wx.setNavigationBarTitle({ title: year + "年" + tmonth + "月" })
+    wx.setNavigationBarTitle({ title: year + "年" + tmonth + "月"})
   },
 
   //选择月
@@ -104,8 +108,10 @@ Page({
     this.setData({
       cur_month: chose_month,
     });
-    this.calendar(this.data.cur_year, this.data.cur_month)
+    this.calendar(this.data.cur_year, this.data.cur_month);
 
+    //获取当前日期的详细信息
+    this.getDateDetails();
   },
 
   //选择年
@@ -119,14 +125,18 @@ Page({
     });
     this.calendar(y, this.data.cur_month);
 
+    //获取当前日期的详细信息
+    this.getDateDetails();
   },
 
   //操作月
   handleMonth: function (e) {
     const handle = e.currentTarget.dataset.handle;
+    const day = e.currentTarget.dataset.day;
     const cur_year = this.data.cur_year;
     const cur_month = this.data.cur_month;
     const index = this.data.itemIndex;
+
     if (handle === 'prev') {
       let newMonth = cur_month - 1;
       let newYear = cur_year;
@@ -141,6 +151,7 @@ Page({
       this.setData({
         cur_year: newYear,
         cur_month: newMonth,
+        cur_day: day,
         itemIndex: idx
       });
 
@@ -158,8 +169,41 @@ Page({
       this.setData({
         cur_year: newYear,
         cur_month: newMonth,
+        cur_day: day,
         itemIndex: idx
       });
     }
+
+    //获取当前日期的详细信息
+    this.getDateDetails();
+  },
+
+  //切换日
+  changeDay: function(e) {
+    const day = e.currentTarget.dataset.day;
+    this.setData({
+      cur_day: day
+    })
+
+    //获取当前日期的详细信息
+    this.getDateDetails();
+  },
+
+  //获取选中日期的详细信息
+  getDateDetails: function(e) {
+    const cur_year = this.data.cur_year;
+    const cur_month = this.data.cur_month;
+    const cur_day = this.data.cur_day;
+
+    var dateStr = cur_year + "-" + cur_month + "-" + cur_day;
+    var data = {
+      token: app.globalData.user.token,
+      date: dateStr
+    }
+    util.getHttp(this.getLaoHuangLisuccess, this.fail, data, "/publicApi/getLaoHuangLi");
+  },
+
+  getLaoHuangLisuccess: function(data) {
+    console.log(data)
   }
 })
