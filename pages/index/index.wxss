@@ -21,9 +21,17 @@ page {
   width: 30px;
   height: 30px;
   top: 5%;
-  right: 5%;
+  left: 5%;
   position: absolute;
   animation:mymove_user 3s alternate;
+}
+
+.user_login_tips{
+  position: absolute;
+  left: 15%;
+  top: 6%;
+  font-family: Tahoma,Arial,STHupo;
+  color: whitesmoke;
 }
 
 .container {

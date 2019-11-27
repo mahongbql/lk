@@ -84,7 +84,7 @@ Page({
       console.log("用户已验证，全局存在用户信息");
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo:true
+        hasUserInfo: true
       })
     } else if (this.data.canIUse) {
       console.log("在 Page.onLoad 之后返回");
@@ -117,7 +117,7 @@ Page({
     }
 
     this.identity();
-    
+
     var that = this; //  高度自适应 
     wx.getSystemInfo({
       success: function (res) {
