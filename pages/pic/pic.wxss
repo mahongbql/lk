@@ -91,15 +91,15 @@ page {
   border-radius: 16rpx;
 } 
 .item-ans{ 
-  width: 98%;
+  width: 90%;
   display: flex; 
   justify-content: space-between;
   flex-direction: column;
   box-sizing: border-box; 
   height: 600rpx;
-  border-radius: 3px;
+  border-radius: 25px;
   margin: 20rpx auto;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(100, 20, 140, 0.2);
 } 
 .photo{
   width: 100%;
