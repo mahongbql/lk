@@ -91,7 +91,7 @@ page {
   border-radius: 16rpx;
 } 
 .item-ans{ 
-  width: 90%;
+  width: 94%;
   display: flex; 
   justify-content: space-between;
   flex-direction: column;
