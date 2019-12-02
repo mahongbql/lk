@@ -73,6 +73,7 @@ Page({
     this.setData({
       routers: routers
     })
+    console.log(user);
   },
 
   //与luckydog交流
