@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="warp">
   <image class="background-img" src='../resource/img/index/background.jpg'></image>
-  <view class="userimg">
+  <view wx-if="{{routers[0].show}}" class="userimg">
     <image src='../resource/icon/index/userimg.png' bindtap="jumpToUser"></image>
     <view class="user_login_tips">
       点击授权登录
