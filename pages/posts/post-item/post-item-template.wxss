@@ -24,6 +24,7 @@
 .post-msg{
   width:300px;
   height:100%;
+  margin-top:10px;
   display: flex;
   flex-direction: column;
 }
@@ -77,13 +78,14 @@
   width:65rpx;
   height:65rpx;
   border-radius: 30px;
-  margin:0 5px;
+  margin:8px 10px;
 }
 
 .nickName{
   font-size: 30rpx;
   line-height: 30px;
   color: grey;
+  margin:8px 0;
 }
 
 .post-like{
@@ -91,6 +93,7 @@
   width:200px;
   height:100%;
   right: -90px;
+  margin:11px 0;
 }
 
 .post-like-image{
