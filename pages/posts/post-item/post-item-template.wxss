@@ -37,7 +37,7 @@
 
 .title{
   height:30%;
-  font-size: 38rpx;
+  font-size: 30rpx;
   letter-spacing: 2px;
   padding:20rpx;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

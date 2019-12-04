@@ -73,7 +73,7 @@ page .backimg{
 
 .userinfo-avatar {
   width: 128rpx;
-  height: 128rpx;
+  height: 130rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
