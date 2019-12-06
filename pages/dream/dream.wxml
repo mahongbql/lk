@@ -3,7 +3,7 @@
 <view class="container">
   <image class="background-img" src="../resource/img/dream/dream.jpg"></image>
   <view class="dream-logo">
-    <image mode="widthFix" src="../resource/icon/dream/dream_logo.png"></image>
+    <image src="../resource/icon/dream/dream_logo.png"></image>
   </view>
 
   <view class="weui-search-bar">
