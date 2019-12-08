@@ -181,7 +181,7 @@ Page({
       existText: false
     })
     wx.navigateTo({
-      url: '../pic/pic'
+      url: '../login/login'
     })
   },
   deleteImage: function(e){
