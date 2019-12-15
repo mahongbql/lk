@@ -1,8 +1,9 @@
 
 /**app.wxss**/
-page{background:grey}
+.background-img{position: fixed;width:100%;height:100%;z-index:-1;}
+
 .calendar{overflow-x:hidden;}
-.calendar-choose{height:100rpx;line-height:100rpx;background:gray;padding:0 30rpx;font-size:34rpx;color:#fefefe;border-bottom: 1rpx solid #e5e5e5;}
+.calendar-choose{height:100rpx;line-height:100rpx;padding:0 30rpx;font-size:34rpx;color:#fefefe;border-bottom: 1rpx solid #e5e5e5;}
 .calendar .mouth-wrap{flex: 1;display: flex;justify-content: space-between;}
 .mouth-wrap .iconfont{color:#b6b6b6;font-size: 50rpx;}
 .calendar .mouth-wrap>view{display: inline-block;text-align: center;}
@@ -21,7 +22,7 @@ page{background:grey}
 
 /**详细信息展示**/
 .details{width:100%}
-.details .yangli{width:100%;height:30px;font-size:20px;margin:10px;color:#fefefe}
+.details .yangli{width:100%;height:30px;font-size:15px;margin:10px;color:#fefefe}
 .details .yinli{width:100%;height:100px;}
 .details .wuxing{width:100%;height:100px;}
 .details .chongsha{width:100%;height:100px;}

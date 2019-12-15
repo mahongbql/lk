@@ -1,4 +1,5 @@
 <!--wxml-->
+<image class="background-img" src="https://luckydogma.work/group1/M00/00/06/Cv4Zwl3zIvGAR1xsAAPUb9Ytf8o372.jpg"></image>
 <view class="calendar">
   <view class="flex calendar-choose">
     <view class="tc mouth-wrap">
