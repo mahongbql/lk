@@ -40,3 +40,17 @@
     </view> 
   </view>  
 </view>
+
+<view class="details">
+  <view class="yangli flex">
+    选中日期为 : {{dateData.yangli}}
+  </view>
+  <view class="yinli"></view>
+  <view class="wuxing"></view>
+  <view class="chongsha"></view>
+  <view class="pengzubaiji"></view>
+  <view class="yi"></view>
+  <view class="jishenyiqu"></view>
+  <view class="ji"></view>
+  <view class="xiongshenyiji"></view>
+</view>

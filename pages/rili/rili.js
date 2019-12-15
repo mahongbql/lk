@@ -6,6 +6,7 @@ Page({
     cruPDataList: [],
     weeklist: ['日', '一', '二', '三', '四', '五', '六'],
     itemIndex: 10,   //当前年份的数组下标    这个值和年份的前后一致的值相等，要注意就是年份访问时一当前年为切割点，前后年份范围的数值相等比较好计算，当然看需求而定啦。
+    dateData:null
   },
   /**
    * 生命周期函数--监听页面加载
@@ -118,7 +119,6 @@ Page({
   chooseYear: function (e) {
     var idx = e.detail.value;
     var y = this.data.yearList[idx];
-    console.log(idx)
     this.setData({
       itemIndex: idx,
       cur_year: y,
@@ -132,7 +132,7 @@ Page({
   //操作月
   handleMonth: function (e) {
     const handle = e.currentTarget.dataset.handle;
-    const day = e.currentTarget.dataset.day;
+    const day = this.data.cur_day;
     const cur_year = this.data.cur_year;
     const cur_month = this.data.cur_month;
     const index = this.data.itemIndex;
@@ -192,7 +192,7 @@ Page({
   //获取选中日期的详细信息
   getDateDetails: function(e) {
     const cur_year = this.data.cur_year;
-    const cur_month = this.data.cur_month;
+    const cur_month = this.data.cur_month + 1;
     const cur_day = this.data.cur_day;
 
     var dateStr = cur_year + "-" + cur_month + "-" + cur_day;
@@ -204,6 +204,8 @@ Page({
   },
 
   getLaoHuangLisuccess: function(data) {
-    console.log(data)
+    this.setData({
+      dateData: data
+    })
   }
 })
