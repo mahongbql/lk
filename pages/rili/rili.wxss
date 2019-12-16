@@ -21,13 +21,13 @@
 .calendar .today{background-color: yellowgreen;}
 
 /**详细信息展示**/
-.details{width:100%}
-.details .yangli{width:100%;height:30px;font-size:15px;margin:10px;color:#fefefe}
-.details .yinli{width:100%;height:100px;}
-.details .wuxing{width:100%;height:100px;}
-.details .chongsha{width:100%;height:100px;}
-.details .pengzubaiji{width:100%;height:100px;}
-.details .yi{width:100%;height:100px;}
-.details .jishenyiqu{width:100%;height:100px;}
-.details .ji{width:100%;height:100px;}
-.details .xiongshenyiji{width:100%;height:100px;}
+.details{width:98%;margin:0 auto}
+.details .yangli{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .yinli{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .wuxing{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .chongsha{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .pengzubaiji{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .yi{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .jishenyiqu{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .ji{width:100%;font-size:15px;margin:10px;color:#fefefe}
+.details .xiongshenyiji{width:100%;font-size:15px;margin:10px;color:#fefefe}
