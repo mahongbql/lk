@@ -248,7 +248,7 @@ Page({
         break;
     }
 
-    return pageIndex;
+    return pageIndex + 1;
   },
 
   success:function(data){
@@ -297,16 +297,10 @@ Page({
  * 获取更多数据
  */
   moreData:function(){
-    var pageSize = this.data.pageSize
-    var type = this.data.currentTab;
-    var token = app.globalData.user.token;
-    var userId = app.globalData.user.userId;
     var currentTab = this.data.currentTab;
-    var pageIndex = this.getPageIndexMore(currentTab)
-
     var hasMore = false;
 
-    switch (currentTab){
+    switch (currentTab) {
       case 0:
         hasMore = this.data.postsHasMore;
         break;
@@ -315,7 +309,7 @@ Page({
         break;
       case 2:
         hasMore = this.data.collectHasMore;
-        break;  
+        break;
     }
 
     if (!hasMore) {
@@ -327,6 +321,14 @@ Page({
       })
       return;
     }
+
+    var pageSize = this.data.pageSize
+    var type = this.data.currentTab;
+    var token = app.globalData.user.token;
+    var userId = app.globalData.user.userId;
+    var pageIndex = this.getPageIndexMore(currentTab)
+
+    console.log("pageIndex -> " + pageIndex)
 
     var data = {
       "pageNum": pageIndex,
