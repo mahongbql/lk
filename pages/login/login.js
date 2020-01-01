@@ -10,8 +10,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    identity:"",
-    dataList:[],
+    identity: "",
+    dataList: [],
 
     picHasMore: true,
     postsHasMore: true,
@@ -23,14 +23,14 @@ Page({
 
     pageSize: 10,    //分页查询数量
     dataListKey: "data_list_",  //缓存key
-    isUpLevel:false,
-    userCollectNum:0
+    isUpLevel: false,
+    userCollectNum: 0
   },
 
   /**
    * 提升用户等级
    */
-  upLevel:function(){
+  upLevel: function () {
     var userId = app.globalData.user.userId;
     var token = app.globalData.user.token;
     var data = {
@@ -41,7 +41,7 @@ Page({
     util.getHttp(this.upLevelSuccess, this.fail, data, "/getImage/getCollectNumber");
   },
 
-  upLevelSuccess:function(data){
+  upLevelSuccess: function (data) {
     var userCollectNumber = data.number;
     this.setData({
       userCollectNumber: userCollectNumber
@@ -53,7 +53,7 @@ Page({
     })
   },
 
-  getUserInfo: function(e){
+  getUserInfo: function (e) {
     app.globalData.userInfo = e.detail.userInfo;
     if (app.globalData.userInfo != undefined) {
       this.setData({
@@ -133,14 +133,14 @@ Page({
     this.getData(token);
   },
 
-  perfectUserInfo: function(data){
+  perfectUserInfo: function (data) {
     console.log("信息完善成功");
   },
 
   /**
    * 用户角色
    */
-  identity:function(){
+  identity: function () {
     //用户
     var role = app.globalData.user.role
     var userType = "";
@@ -148,11 +148,11 @@ Page({
 
     switch (role) {
       case 1:
-        userType = "普 通 用 户"; 
+        userType = "普 通 用 户";
         identityClass = "user";
         break;
       case 2:
-        userType = "VIP 用户"; 
+        userType = "VIP 用户";
         identityClass = "vip";
         break;
       case 10:
@@ -173,15 +173,15 @@ Page({
     if (this.data.currentTaB == cur) {
       return false;
     } else {
-      this.setData({ 
+      this.setData({
         currentTab: cur,
-        dataList:[]
+        dataList: []
       })
       this.getData(this.data.token)
     }
-  }, 
+  },
 
-  getData:function(token){
+  getData: function (token) {
     var cur = this.data.currentTab;
     var userId = app.globalData.user.userId;
     var type = this.data.currentTab;
@@ -205,7 +205,7 @@ Page({
     }
   },
 
-  getPageIndex: function(cur){
+  getPageIndex: function (cur) {
     var pageIndex = 1
     switch (cur) {
       case 0:
@@ -222,10 +222,10 @@ Page({
     return pageIndex;
   },
 
-/**
- * 获取对应的index（更多）
- */
-  getPageIndexMore: function(cur){
+  /**
+   * 获取对应的index（更多）
+   */
+  getPageIndexMore: function (cur) {
     var pageIndex = 1
     switch (cur) {
       case 0:
@@ -251,7 +251,7 @@ Page({
     return pageIndex;
   },
 
-  success:function(data){
+  success: function (data) {
     var type = this.data.currentTab;
     var key = this.data.dataListKey;
     var pageSize = this.data.pageSize
@@ -293,10 +293,10 @@ Page({
     this.judgeHasMore(dataList.length);
   },
 
-/**
- * 获取更多数据
- */
-  moreData:function(){
+  /**
+   * 获取更多数据
+   */
+  moreData: function () {
     var pageSize = this.data.pageSize
     var type = this.data.currentTab;
     var token = app.globalData.user.token;
@@ -306,7 +306,7 @@ Page({
 
     var hasMore = false;
 
-    switch (currentTab){
+    switch (currentTab) {
       case 0:
         hasMore = this.data.postsHasMore;
         break;
@@ -315,7 +315,7 @@ Page({
         break;
       case 2:
         hasMore = this.data.collectHasMore;
-        break;  
+        break;
     }
 
     if (!hasMore) {
@@ -332,7 +332,7 @@ Page({
       "pageNum": pageIndex,
       "pageSize": pageSize,
       "type": type,
-      "userId":userId,
+      "userId": userId,
       "token": token
     };
 
@@ -381,7 +381,7 @@ Page({
   /**
    * 设置是否有更多状态
    */
-  setHasMoreStatus: function (currentTab, hasMore){
+  setHasMoreStatus: function (currentTab, hasMore) {
     switch (currentTab) {
       case 0:
         this.setData({
@@ -404,10 +404,10 @@ Page({
     }
   },
 
-/**
- * 升级vip取消按钮
- */
-  concel:function(){
+  /**
+   * 升级vip取消按钮
+   */
+  concel: function () {
     this.setData({
       isUpLevel: false
     })
@@ -416,7 +416,7 @@ Page({
   /**
    * 升级vip成功按钮
    */
-  confirm:function(){
+  confirm: function () {
     var userCollectNumber = this.data.userCollectNumber;
     var userCollectNum = this.data.userCollectNum;
     if (userCollectNumber < userCollectNum) {
@@ -425,14 +425,14 @@ Page({
         content: '不满足条件',
         showCancel: false
       })
-    } else{
+    } else {
       //进行数据修改
       var token = app.globalData.user.token;
       var userId = app.globalData.user.userId;
 
       var data = {
-        "token":token,
-        "userId":userId
+        "token": token,
+        "userId": userId
       }
 
       util.getHttp(this.upSuccess, this.fail, data, "/user/upVipLevel");
@@ -443,7 +443,7 @@ Page({
     })
   },
 
-  upSuccess:function(data){
+  upSuccess: function (data) {
     wx.showToast({
       title: '申请成功',
       icon: 'success',
@@ -451,7 +451,7 @@ Page({
     })
   },
 
-  admin: function(){
+  admin: function () {
     var role = app.globalData.user.role;
     if (10 == role) {
       wx.navigateTo({
