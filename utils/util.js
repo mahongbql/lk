@@ -1,5 +1,5 @@
-// const host = "https://www.luckydogma.work";
-const host = "http://192.168.1.9:8080";
+const host = "https://www.luckydogma.work";
+// const host = "http://192.168.1.9:8080";
 // const host = "http://127.0.0.1:8080";
 
 const formatTime = date => {

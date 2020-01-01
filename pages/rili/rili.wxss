@@ -12,7 +12,7 @@
 .calendar .next-mouth{width:100rpx;}
 .calendar .year-wrap{width:200rpx;-webkit-display: flex;display: flex;-webkit-justify-content:center;justify-content: center;}
 .calendar .year-wrap .picker{text-align: center;}
-.calendar .week-list{line-height: 60rpx;background:#fd9c0ab6;}
+.calendar .week-list{line-height: 60rpx;background:rgba(255,165,0,0.5);}
 .calendar .week-list .week-itm{flex:1;text-align: center;font-size:28rpx;color:#fff;}
 .calendar .days-list{-webkit-flex-wrap: wrap;flex-wrap: wrap;width:99.995%;}
 .calendar .days-list .day{width: 14.285%;height:60rpx;border-right:1rpx solid #e5e5e5;border-bottom:1rpx solid #e5e5e5;position: relative;text-align: center;line-height: 60rpx;color: #fefefe}
